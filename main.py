@@ -43,3 +43,63 @@ while True:
         cadastrar()
     else:
         print("Opcao invalida.")
+
+
+alunos = []
+
+
+def cadastrar():
+    nome = input("Nome do aluno: ").strip()
+    if nome == "":
+        print("O nome nao pode ficar vazio.")
+        return
+
+    for aluno in alunos:
+        if aluno.lower() == nome.lower():
+            print("Aluno ja cadastrado.")
+            return
+
+    alunos.append(nome)
+    print("Aluno cadastrado com sucesso.")
+
+
+def listar():
+    if len(alunos) == 0:
+        print("Nenhum aluno cadastrado.")
+        return
+
+    print("\n--- ALUNOS ---")
+    for numero, aluno in enumerate(alunos, start=1):
+        print(f"{numero}. {aluno}")
+    print(f"Total: {len(alunos)} aluno(s)")
+
+
+def buscar():
+    termo = input("Nome completo para buscar: ").strip()
+    for aluno in alunos:
+        if aluno.lower() == termo.lower():
+            print(f"Encontrado: {aluno}")
+            return
+    print("Aluno nao encontrado.")
+
+
+while True:
+    print("\n--- CADASTRO DE ALUNOS ---")
+    print("1 - Cadastrar")
+    print("2 - Listar")
+    print("3 - Buscar")
+    print("0 - Sair")
+
+    opcao = input("Escolha: ")
+
+    if opcao == "0":
+        print("Programa encerrado.")
+        break
+    elif opcao == "1":
+        cadastrar()
+    elif opcao == "2":
+        listar()
+    elif opcao == "3":
+        buscar()
+    else:
+        print("Opcao invalida.")
